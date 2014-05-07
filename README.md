@@ -1,7 +1,7 @@
-php-plex
+plex
 ========
 
-A simple PHP library for interacting with the Plex (http://plexapp.com) HTTP Control API.
+A simple PHP library for interacting with the Plex (http://plex.tv) HTTP Control API.
 
 Requirements
 ------------

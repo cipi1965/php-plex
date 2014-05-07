@@ -1,5 +1,5 @@
 {
-    "name": "Wubs/PlexPhp",
+    "name": "Wubs/Plex",
     "description": "Connect to your plex library through php",
     "minimum-stability": "stable",
     "license": "proprietary",
