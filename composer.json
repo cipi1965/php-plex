@@ -1,0 +1,15 @@
+{
+    "name": "Wubs/Plex-php",
+    "description": "Connect to your plex library through php",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Megawubs",
+            "email": "bwubs@me.com"
+        }
+    ],
+    "autoload":{
+        "psr-4":{"Wubs\\" : "src/" }
+    }
+}
