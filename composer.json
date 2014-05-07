@@ -1,5 +1,5 @@
 {
-    "name": "Wubs/Plex-php",
+    "name": "Wubs/PlexPhp",
     "description": "Connect to your plex library through php",
     "minimum-stability": "stable",
     "license": "proprietary",
@@ -10,6 +10,6 @@
         }
     ],
     "autoload":{
-        "psr-4":{"Wubs\\" : "src/" }
+        "psr-4":{"Wubs\\" : "src/Wubs/" }
     }
 }
