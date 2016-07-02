@@ -1,9 +1,13 @@
 {
-    "name": "Wubs/Plex",
+    "name": "cipi1965/Plex",
     "description": "Connect to your plex library through php",
     "minimum-stability": "stable",
     "license": "proprietary",
     "authors": [
+        {
+            "name": "cipi1965",
+            "email": "altermatte@gmail.com"
+        },
         {
             "name": "Megawubs",
             "email": "bwubs@me.com"
