@@ -1,7 +1,7 @@
 {
     "name": "cipi1965/Plex",
     "description": "Connect to your plex library through php",
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "license": "proprietary",
     "authors": [
         {
