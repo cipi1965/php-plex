@@ -58,6 +58,16 @@ abstract class MachineAbstract implements MachineInterface
      * @var integer
      */
     protected $port;
+    
+    /**
+     * The token to use for plex web api requests.
+     * @var string
+     */
+    /**
+     * The token to use for plex web api requests.
+     * @var integer
+     */
+    protected $token;
 
     /**
      * Returns the base URL, which will be standard for all requests made to the
@@ -144,6 +154,13 @@ abstract class MachineAbstract implements MachineInterface
      */
     protected function makeCall($url)
     {
+        if ($this->token !== null && $this->token !== "") {
+            if(stripos($url,'?')>0)
+    			$url.='&';
+    		else
+    			$url.='?';
+    		$url.= 'X-Plex-Token='.$this->$token;
+        }
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, $url);

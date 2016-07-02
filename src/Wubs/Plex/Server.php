@@ -67,11 +67,14 @@ class Server extends MachineAbstract
      *
      * @return \Wubs\Plex\Server
      */
-    public function __construct($name, $address, $port)
+    public function __construct($name, $address, $port, $token = "")
     {
         $this->name = $name;
         $this->address = $address;
         $this->port = $port ? $port : self::DEFAULT_PORT;
+        if ($token !== "") {
+            $this->token = $token;
+        }
     }
 
     /**
@@ -170,5 +173,17 @@ class Server extends MachineAbstract
     public function getPort()
     {
         return $this->port;
+    }
+    
+    public function getToken()
+    {
+        return $this->token;
+    }
+    
+    public function setToken($token = "")
+    {
+        if ($this->token !== "") {
+            $this->token = $token;
+        }
     }
 }
