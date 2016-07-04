@@ -157,7 +157,7 @@ class Plex
     public function addServersFromMyPlex()
     {
         if ($this->token !== null && $this->token !== "") {
-            $host = "https://plex.tv/users/sign_in.json"; 
+            $host = "https://plex.tv/pms/servers.xml"; 
     		$header = array( 
     			'Content-Type: application/xml; charset=utf-8', 
     			'Content-Length: 0', 
