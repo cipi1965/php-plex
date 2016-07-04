@@ -153,4 +153,27 @@ class Plex
     {
         return self::$clients[$clientName];
     }
+    
+    public function addServersFromMyPlex()
+    {
+        if ($this->token !== null && $this->token !== "") {
+            $host = "https://plex.tv/users/sign_in.json"; 
+    		$header = array( 
+    			'Content-Type: application/xml; charset=utf-8', 
+    			'Content-Length: 0', 
+    			'X-Plex-Client-Identifier: 8334-8A72-4C28-FDAF-29AB-479E-4069-C3A3', 
+    			'X-Plex-Product: PhpPlexAPI', 'X-Plex-Version: v1_00',
+    			'X-Plex-Token: '.$this->token );
+    		$process = curl_init($host); 
+    		curl_setopt($process, CURLOPT_HTTPHEADER, $header); 
+    		curl_setopt($process, CURLOPT_HEADER, 0); 
+    		curl_setopt($process, CURLOPT_TIMEOUT, 30); 
+    		curl_setopt($process, CURLOPT_SSL_VERIFYPEER, 0); 
+    		curl_setopt($process, CURLOPT_RETURNTRANSFER, true); 
+    		$data = curl_exec($process); 
+    		$curlError = curl_error($process); 
+    		$xml = simplexml_load_string($data);
+    		print_r($xml);
+        }
+    }
 }
