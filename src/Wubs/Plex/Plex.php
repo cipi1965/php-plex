@@ -43,7 +43,7 @@ class Plex
      * instantiating software.
      * @var Server[]
      */
-    public static $servers = array();
+    private static $servers = array();
 
     /**
      * A list of the Plex client machines on the network This is found upon
@@ -174,13 +174,13 @@ class Plex
     		$curlError = curl_error($process); 
     		$xml = simplexml_load_string($data);
     		$servers = [];
-    		print_r($xml);
     		foreach ($xml as $server) {
 				$servers[trim(strval($server->attributes()["name"]))] = [
 					'address' => trim(strval($server->attributes()["address"])),
 					'port' => trim(strval($server->attributes()["port"]))
 				];
 			}
+			$this->registerServers($servers);
         }
     }
 }
