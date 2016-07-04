@@ -173,7 +173,13 @@ class Plex
     		$data = curl_exec($process); 
     		$curlError = curl_error($process); 
     		$xml = simplexml_load_string($data);
-    		return $xml;
+    		$servers = [];
+    		foreach ($plex->addServersFromMyPlex() as $server) {
+				$servers[strval($server->attributes()["name"])] = [
+					'address' => strval($server->attributes()["address"]),
+					'port' => strval($server->attributes()["port"])
+				];
+			}
         }
     }
 }
