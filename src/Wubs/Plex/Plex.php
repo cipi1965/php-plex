@@ -175,9 +175,9 @@ class Plex
     		$xml = simplexml_load_string($data);
     		$servers = [];
     		foreach ($xml as $server) {
-				$servers[strval($server->attributes()["name"])] = [
-					'address' => strval($server->attributes()["address"]),
-					'port' => strval($server->attributes()["port"])
+				$servers[trim(strval($server->attributes()["name"]))] = [
+					'address' => trim(strval($server->attributes()["address"])),
+					'port' => trim(strval($server->attributes()["port"]))
 				];
 			}
         }
