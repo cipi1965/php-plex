@@ -159,7 +159,7 @@ abstract class MachineAbstract implements MachineInterface
     			$url.='&';
     		else
     			$url.='?';
-    		$url.= 'X-Plex-Token='.$this->$token;
+    		$url.= 'X-Plex-Token='.$this->token;
         }
         $ch = curl_init();
 

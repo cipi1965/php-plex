@@ -36,7 +36,7 @@ class Plex
 		$data = curl_exec($process); 
 		$curlError = curl_error($process); 
 		$json = json_decode($data, true);
-		$this->$token= $json['user']['authentication_token'];
+		$this->token= $json['user']['authentication_token'];
 	}
     /**
      * A list of Plex server machines on the network. This is defined by the
