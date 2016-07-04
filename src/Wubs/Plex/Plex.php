@@ -43,7 +43,7 @@ class Plex
      * instantiating software.
      * @var Server[]
      */
-    private static $servers = array();
+    public static $servers = array();
 
     /**
      * A list of the Plex client machines on the network This is found upon
