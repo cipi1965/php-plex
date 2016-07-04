@@ -135,7 +135,8 @@ class Server extends MachineAbstract
         return new Library(
             $this->name,
             $this->address,
-            $this->port
+            $this->port,
+            $this->token
         );
     }
 
