@@ -173,7 +173,7 @@ class Plex
     		$data = curl_exec($process); 
     		$curlError = curl_error($process); 
     		$xml = simplexml_load_string($data);
-    		print_r($xml);
+    		return $xml;
         }
     }
 }
