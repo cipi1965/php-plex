@@ -254,7 +254,7 @@ abstract class ItemAbstract
      *
      * @return ItemAbstract A single Plex library item.
      */
-    public function getPolymorphicItem($polymorphicData)
+    public function getPolymorphicItem($polymorphicData, $scopedToItem = false)
     {
         // At the item level, instead of assuming an integer is a rating key, we
         // assume an integer is an index. This allows us to retrieve seasons,
@@ -322,14 +322,14 @@ abstract class ItemAbstract
      * @return ItemAbstract An instantiated item child
      * class.
      */
-    public static function factory($type, $name, $address, $port)
+    public static function factory($type, $name, $address, $port, $token)
     {
         $class = sprintf(
             'Wubs\\Plex\\Server\\Library\\Item\\%s',
             ucfirst($type)
         );
 
-        return new $class($name, $address, $port);
+        return new $class($name, $address, $port, $token);
     }
 
     /**
@@ -673,7 +673,7 @@ abstract class ItemAbstract
      */
     public function setMedia($media)
     {
-        $mediaObject = new Item_Media(reset($media));
+        $mediaObject = new Item\Media\Media(reset($media));
         $this->media = $mediaObject;
     }
 }

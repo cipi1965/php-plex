@@ -1,5 +1,5 @@
 <?php
-namespace Wubs\Plex\Server\Library\Item\Media\File\FileInterface;
+namespace Wubs\Plex\Server\Library\Item\Media\File;
 
     /**
      * Plex Library Item Media File

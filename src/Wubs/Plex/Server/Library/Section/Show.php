@@ -112,6 +112,22 @@ class Show
     }
 
     /**
+     * Returns the recently viewed movies for the given section with date
+     *
+     * @uses SectionAbstract::getRecentlyViewedItems()
+     *
+     * @return Item_Show[] An array of movies.
+     */
+    public function getViewedShowsByDays($days)
+    {
+        return $this->getAllWithFilter([
+            "type" => SectionAbstract::SEARCH_TYPE_SHOW,
+            "episode.lastViewedAt>>" => "-".intval($days)."d",
+            "sort" => "lastViewedAt:desc"
+        ]);
+    }
+
+    /**
      * Returns the recently viewed shows for the given section.
      *
      * @uses Library::getItems()

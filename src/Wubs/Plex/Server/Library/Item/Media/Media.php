@@ -1,7 +1,7 @@
 <?php
-namespace Wubs\Plex\Server\Library\Item\Media\Media;
+namespace Wubs\Plex\Server\Library\Item\Media;
 
-use Wubs\Plex\Server\Library\Item\Media\MediaInterface\MediaInterface;
+use Wubs\Plex\Server\Library\Item\Media\MediaInterface;
 
 /**
  * Plex Library Item Media
@@ -153,7 +153,7 @@ class Media
 
         $files = array();
         foreach ($rawMedia['Part'] as $file) {
-            $files[] = new Item_Media_File($file);
+            $files[] = new File\File($file);
         }
 
         if (!empty($files)) {

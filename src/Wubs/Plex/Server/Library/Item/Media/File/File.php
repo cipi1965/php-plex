@@ -1,6 +1,6 @@
 <?php
 
-namespace Wubs\Plex\Server\Library\Item\Media\File\File;
+namespace Wubs\Plex\Server\Library\Item\Media\File;
 
 use Wubs\Plex\Server\Library\Item\Media\File\FileInterface;
 

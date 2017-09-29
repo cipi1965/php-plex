@@ -2,7 +2,7 @@
 
 namespace Wubs\Plex\Machine;
 
-use Wubs\PhpPlex\Exception\Machine as MachineException;
+use Wubs\Plex\Exception\Machine as MachineException;
 
 /**
  * Plex Machine
@@ -58,7 +58,7 @@ abstract class MachineAbstract implements MachineInterface
      * @var integer
      */
     protected $port;
-    
+
     /**
      * The token to use for plex web api requests.
      * @var string
@@ -168,14 +168,14 @@ abstract class MachineAbstract implements MachineInterface
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         $response = curl_exec($ch);
+        $errno = curl_errno($ch);
 
-        if ($response === false) {
+        if ($response === false && $errno!=52) {
             throw new MachineException(
                 'CURL_ERROR',
                 array(curl_errno($ch), curl_error($ch))
             );
         }
-
         curl_close($ch);
 
         $xml = simplexml_load_string($response);

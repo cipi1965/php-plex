@@ -159,7 +159,7 @@ class Library extends Server
     {
         $items = array();
         $itemArray = $this->makeCall($this->buildUrl($endpoint));
-
+        
         foreach ($itemArray as $attribute) {
             // Not all attributes at this point have a 'type.' Sometimes they
             // represent a different sort of list like 'All episodes.' In this
@@ -170,7 +170,8 @@ class Library extends Server
                     $attribute['type'],
                     $this->name,
                     $this->address,
-                    $this->port
+                    $this->port,
+                    $this->token
                 );
                 $item->setAttributes($attribute);
                 $items[] = $item;
@@ -241,13 +242,13 @@ class Library extends Server
         $sectionArray = $this->makeCall(
             $this->buildUrl(self::ENDPOINT_SECTION)
         );
-
         foreach ($sectionArray as $attribute) {
             $section = SectionAbstract::factory(
                 $attribute['type'],
                 $this->name,
                 $this->address,
-                $this->port
+                $this->port,
+                $this->token
             );
             $section->setAttributes($attribute);
 

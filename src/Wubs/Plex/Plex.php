@@ -17,24 +17,25 @@ use Wubs\Plex\Exception\Server as ServerException;
 class Plex
 {
     protected $token;
-	public function login($username, $password) { 
-		$host = "https://plex.tv/users/sign_in.json"; 
-		$header = array( 
-			'Content-Type: application/xml; charset=utf-8', 
-			'Content-Length: 0', 
-			'X-Plex-Client-Identifier: 8334-8A72-4C28-FDAF-29AB-479E-4069-C3A3', 
+    protected $loadClients = true;
+	public function login($username, $password) {
+		$host = "https://plex.tv/users/sign_in.json";
+		$header = array(
+			'Content-Type: application/xml; charset=utf-8',
+			'Content-Length: 0',
+			'X-Plex-Client-Identifier: 8334-8A72-4C28-FDAF-29AB-479E-4069-C3A3',
 			'X-Plex-Product: PhpPlexAPI', 'X-Plex-Version: v1_00', );
-		$process = curl_init($host); 
-		curl_setopt($process, CURLOPT_HTTPHEADER, $header); 
-		curl_setopt($process, CURLOPT_HEADER, 0); 
-		curl_setopt($process, CURLOPT_HTTPAUTH, CURLAUTH_BASIC); 
-		curl_setopt($process, CURLOPT_USERPWD, $username . ":" . $password); 
-		curl_setopt($process, CURLOPT_TIMEOUT, 30); 
-		curl_setopt($process, CURLOPT_SSL_VERIFYPEER, 0); 
-		curl_setopt($process, CURLOPT_POST, 1); 
-		curl_setopt($process, CURLOPT_RETURNTRANSFER, true); 
-		$data = curl_exec($process); 
-		$curlError = curl_error($process); 
+		$process = curl_init($host);
+		curl_setopt($process, CURLOPT_HTTPHEADER, $header);
+		curl_setopt($process, CURLOPT_HEADER, 0);
+		curl_setopt($process, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+		curl_setopt($process, CURLOPT_USERPWD, $username . ":" . $password);
+		curl_setopt($process, CURLOPT_TIMEOUT, 30);
+		curl_setopt($process, CURLOPT_SSL_VERIFYPEER, 0);
+		curl_setopt($process, CURLOPT_POST, 1);
+		curl_setopt($process, CURLOPT_RETURNTRANSFER, true);
+		$data = curl_exec($process);
+		$curlError = curl_error($process);
 		$json = json_decode($data, true);
 		$this->token= $json['user']['authentication_token'];
 	}
@@ -87,17 +88,20 @@ class Plex
             self::$servers[$name] = new Server(
                 $name,
                 $server['address'],
-                $port
+                $port,
+                $server["token"]
             );
         }
 
         // We are going to use the first server in the list to get a list of the
         // available clients and register those automatically.
-        $serverName = array_keys(self::$servers);
-        $serverName = reset($serverName);
-        $this->registerClients(
-            $this->getServer($serverName)->getClients()
-        );
+        if ($this->loadClient) {
+            $serverName = array_keys(self::$servers);
+            $serverName = reset($serverName);
+            $this->registerClients(
+                $this->getServer($serverName)->getClients()
+            );
+        }
     }
 
     /**
@@ -136,7 +140,7 @@ class Plex
                 array($serverName)
             );
         }
-        self::$servers[$serverName]->setToken($this->token);
+        //self::$servers[$serverName]->setToken($this->token);
 
         return self::$servers[$serverName];
     }
@@ -154,31 +158,32 @@ class Plex
     {
         return self::$clients[$clientName];
     }
-    
+
     public function addServersFromMyPlex()
     {
         if ($this->token !== null && $this->token !== "") {
-            $host = "https://plex.tv/pms/servers.xml"; 
-    		$header = array( 
-    			'Content-Type: application/xml; charset=utf-8', 
-    			'Content-Length: 0', 
-    			'X-Plex-Client-Identifier: 8334-8A72-4C28-FDAF-29AB-479E-4069-C3A3', 
+            $host = "https://plex.tv/pms/servers.xml";
+    		$header = array(
+    			'Content-Type: application/xml; charset=utf-8',
+    			'Content-Length: 0',
+    			'X-Plex-Client-Identifier: 8334-8A72-4C28-FDAF-29AB-479E-4069-C3A3',
     			'X-Plex-Product: PhpPlexAPI', 'X-Plex-Version: v1_00',
     			'X-Plex-Token: '.$this->token );
-    		$process = curl_init($host); 
-    		curl_setopt($process, CURLOPT_HTTPHEADER, $header); 
-    		curl_setopt($process, CURLOPT_HEADER, 0); 
-    		curl_setopt($process, CURLOPT_TIMEOUT, 30); 
-    		curl_setopt($process, CURLOPT_SSL_VERIFYPEER, 0); 
-    		curl_setopt($process, CURLOPT_RETURNTRANSFER, true); 
-    		$data = curl_exec($process); 
-    		$curlError = curl_error($process); 
+    		$process = curl_init($host);
+    		curl_setopt($process, CURLOPT_HTTPHEADER, $header);
+    		curl_setopt($process, CURLOPT_HEADER, 0);
+    		curl_setopt($process, CURLOPT_TIMEOUT, 30);
+    		curl_setopt($process, CURLOPT_SSL_VERIFYPEER, 0);
+    		curl_setopt($process, CURLOPT_RETURNTRANSFER, true);
+    		$data = curl_exec($process);
+    		$curlError = curl_error($process);
     		$xml = simplexml_load_string($data);
     		$servers = [];
     		foreach ($xml as $server) {
 				$servers[trim(strval($server->attributes()["name"]))] = [
 					'address' => trim(strval($server->attributes()["address"])),
-					'port' => trim(strval($server->attributes()["port"]))
+					'port' => trim(strval($server->attributes()["port"])),
+                    'token' => trim(strval($server->attributes()["accessToken"]))
 				];
 			}
 			$this->registerServers($servers);

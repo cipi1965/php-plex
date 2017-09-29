@@ -1,8 +1,8 @@
 <?php
 
-namespace Wubs\Plex\Server\Library\Item\Movie;
+namespace Wubs\Plex\Server\Library\Item;
 
-use Wubs\Plex\Server\Library\ItemChildAbstract\ItemChildAbstract;
+use Wubs\Plex\Server\Library\ItemChildAbstract;
 
 /**
  * Plex Library Movie

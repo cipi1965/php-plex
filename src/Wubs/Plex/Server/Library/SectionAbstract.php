@@ -311,6 +311,32 @@ abstract class SectionAbstract extends Library
         );
     }
 
+
+    /**
+     * Generic method allowing a child class to retrieve all items for its
+     * section with some filter
+     *
+     * @param array $parameters Parameters of plex filters
+     *
+     * @uses Library::getItems()
+     * @uses SectionAbstract::buildEndpoint()
+     * @uses SectionAbstract::ENDPOINT_CATEGORY_ALL
+     *
+     * return ItemAbstract[] An array of Plex library items.
+     */
+    public function getAllWithFilter($parameters)
+    {
+        $endpoint = sprintf(
+            '%s?%s',
+            self::ENDPOINT_CATEGORY_ALL,
+            http_build_query($parameters)
+        );
+
+        return $this->getItems(
+            $this->buildEndpoint($endpoint)
+        );
+    }
+
     /**
      * Generic method allowing a child class to retrieve all unwatched items for
      * its section.
@@ -694,7 +720,7 @@ abstract class SectionAbstract extends Library
      * @return SectionAbstract An instantiated section child
      * class.
      */
-    public static function factory($type, $name, $address, $port)
+    public static function factory($type, $name, $address, $port, $token)
     {
 //		$class = ucfirst($type);
         $class = sprintf(
@@ -702,7 +728,7 @@ abstract class SectionAbstract extends Library
             ucfirst($type)
         );
 
-        return new $class($name, $address, $port);
+        return new $class($name, $address, $port, $token);
     }
 
     /**

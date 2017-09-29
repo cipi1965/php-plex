@@ -127,6 +127,22 @@ class Movie
     }
 
     /**
+     * Returns the recently viewed movies for the given section with date
+     *
+     * @uses SectionAbstract::getRecentlyViewedItems()
+     *
+     * @return Item_Movie[] An array of movies.
+     */
+    public function getViewedMoviesByDays($days)
+    {
+        return $this->getAllWithFilter([
+            "type" => SectionAbstract::SEARCH_TYPE_MOVIE,
+            "lastViewedAt>>" => "-".intval($days)."d",
+            "sort" => "lastViewedAt:desc"
+        ]);
+    }
+
+    /**
      * Returns the on deck movies for the given section.
      *
      * @uses SectionAbstract::getOnDeckItems()

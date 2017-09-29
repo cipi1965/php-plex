@@ -1,5 +1,5 @@
 {
-    "name": "cipi1965/Plex",
+    "name": "spikto/php-place",
     "description": "Connect to your plex library through php",
     "minimum-stability": "dev",
     "license": "proprietary",
