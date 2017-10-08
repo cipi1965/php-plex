@@ -1,5 +1,5 @@
 <?php
-namespace Wubs\Plex\Server\Library\Item\Track;
+namespace Wubs\Plex\Server\Library\Item;
 
 use Wubs\Plex\Server\Library\ItemChildAbstract;
 

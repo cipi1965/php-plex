@@ -2,6 +2,9 @@
 
 namespace Wubs\Plex\Server\Library\Item;
 
+use Wubs\Plex\Server\Library\ItemChildAbstract;
+
+
     /**
      * Plex Library Episode
      *
@@ -37,7 +40,7 @@ namespace Wubs\Plex\Server\Library\Item;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GNU Public Licence (GPLv3)
  * @version 0.0.1
  */
-class Item_Episode
+class Episode
     extends ItemChildAbstract
 {
     /**

@@ -1,7 +1,7 @@
 <?php
-namespace Wubs\Plex\Server\Library\Item\Season;
+namespace Wubs\Plex\Server\Library\Item;
 
-use Wubs\Plex\Server\Library\ItemParentAbstract\ItemParentAbstract;
+use Wubs\Plex\Server\Library\ItemParentAbstract;
 
 /**
  * Plex Library Season

@@ -1,7 +1,7 @@
 <?php
-namespace Wubs\Plex\Server\Library\Item\Show;
+namespace Wubs\Plex\Server\Library\Item;
 
-use Wubs\Plex\Server\Library\ItemGrandparentAbstract\ItemGrandparentAbstract;
+use Wubs\Plex\Server\Library\ItemGrandparentAbstract;
 
 /**
  * Plex Library Show
