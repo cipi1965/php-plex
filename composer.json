@@ -1,9 +1,13 @@
 {
-    "name": "spikto/php-plex",
+    "name": "btafoya/php-plex",
     "description": "Connect to your plex library through php",
     "minimum-stability": "dev",
-    "license": "proprietary",
+    "license": "MIT",
     "authors": [
+        {
+            "name": "Brian Tafoya",
+            "email": "btafoya@briantafoya.com"
+        },
         {
             "name": "cipi1965",
             "email": "altermatte@gmail.com"
