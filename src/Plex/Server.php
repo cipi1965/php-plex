@@ -59,9 +59,8 @@ class Server extends MachineAbstract
      * @param string $name The name of the Plex server.
      * @param string $address The IP address of the Plex server.
      * @param integer $port The port on which the Plex server is listening.
-     *
-     * @return \Plex\Server
-     *@uses MachineAbstract::$address
+     * @param string $token
+     * @uses MachineAbstract::$address
      * @uses MachineAbstract::$port
      * @uses Server::DEFAULT_PORT
      *
