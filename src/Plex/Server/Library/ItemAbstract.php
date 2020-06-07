@@ -325,7 +325,7 @@ abstract class ItemAbstract
     public static function factory($type, $name, $address, $port, $token)
     {
         $class = sprintf(
-            'Wubs\\Plex\\Server\\Library\\Item\\%s',
+            'Plex\\Server\\Library\\Item\\%s',
             ucfirst($type)
         );
 
