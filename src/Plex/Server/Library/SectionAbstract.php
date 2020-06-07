@@ -724,7 +724,7 @@ abstract class SectionAbstract extends Library
     {
 //		$class = ucfirst($type);
         $class = sprintf(
-            'Wubs\\Plex\\Server\\Library\\Section\\%s',
+            'Plex\\Server\\Library\\Section\\%s',
             ucfirst($type)
         );
 
