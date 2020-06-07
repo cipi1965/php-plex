@@ -35,7 +35,7 @@ namespace Plex\Exception;
  * @license http://www.gnu.org/licenses/gpl-3.0.html GNU Public Licence (GPLv3)
  * @version 0.0.2
  */
-class Server extends ExceptionAbstract
+class Server extends \Exception
 {
     /**
      * List of valid exception types for the server exception class.
