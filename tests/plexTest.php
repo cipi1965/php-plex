@@ -38,12 +38,12 @@ class plexPhpTest extends \PHPUnit_Framework_TestCase{
 
 	public function testCanFindServer(){
 		$server = $this->plex->getServer('doctor');
-		$this->assertInstanceOf('Wubs\\Plex\\Server', $server);
+		$this->assertInstanceOf('Plex\\Server', $server);
 	}
 
 	public function testCanLoadLibrary(){
 		$library = $this->server->getLibrary();
-		$this->assertInstanceOf('Wubs\\Plex\\Server\\Library', $library);
+		$this->assertInstanceOf('Plex\\Server\\Library', $library);
 	}
 
 	public function testCanLoadSections(){
@@ -53,28 +53,28 @@ class plexPhpTest extends \PHPUnit_Framework_TestCase{
 
 	public function testCanLoadTVShowSection(){
 		$tvShows = $this->library->getSection('TV Shows');
-		$this->assertInstanceOf('Wubs\\Plex\\Server\\Library\\Section\\Show', $tvShows);
+		$this->assertInstanceOf('Plex\\Server\\Library\\Section\\Show', $tvShows);
 	}
 
 	public function testCanLoadMusicSection(){
 		$music = $this->library->getSection("Music");
-		$this->assertInstanceOf('Wubs\\Plex\\Server\\Library\\Section\\Artist', $music);
+		$this->assertInstanceOf('Plex\\Server\\Library\\Section\\Artist', $music);
 	}
 
 	public function testCanLoadMoviesSection(){
 		$movies = $this->library->getSection("Movies");
-		$this->assertInstanceOf('Wubs\\Plex\\Server\\Library\\Section\\Movie', $movies);
+		$this->assertInstanceOf('Plex\\Server\\Library\\Section\\Movie', $movies);
 	}
 
 	public function testCanLoadPhotosSection(){
 		$photos = $this->library->getSection("Photos");
-		$this->assertInstanceOf('Wubs\\Plex\\Server\\Library\\Section\\Photo', $photos);
+		$this->assertInstanceOf('Plex\\Server\\Library\\Section\\Photo', $photos);
 	}
 
 	public function testCanLoadAlbum(){
 		$artists = $this->library->getSection("Music")->getAllArtists();
         $firstArtist = $artists[0];
-        $this->assertInstanceOf('Wubs\\Plex\\Server\\Library\\Item\\Artist', $firstArtist);
+        $this->assertInstanceOf('Plex\\Server\\Library\\Item\\Artist', $firstArtist);
 
 
 	}
