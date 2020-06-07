@@ -1,5 +1,5 @@
 {
-    "name": "btafoya/php-plex",
+    "name": "cipi1965/php-plex",
     "description": "Connect to your plex library through php",
     "minimum-stability": "dev",
     "license": "MIT",
@@ -18,6 +18,6 @@
         }
     ],
     "autoload":{
-        "psr-4":{"Wubs\\" : "src/Wubs/" }
+        "psr-4":{"Plex\\" : "src/Plex/" }
     }
 }

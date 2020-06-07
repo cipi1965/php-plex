@@ -1,9 +1,9 @@
 <?php
 date_default_timezone_set("UTC");
 
-use Wubs\Plex\Plex;
-use Wubs\Plex\Server;
-use Wubs\Plex\Server\Library;
+use Plex\Plex;
+use Plex\Server;
+use Plex\Server\Library;
 
 
 class plexPhpTest extends \PHPUnit_Framework_TestCase{
