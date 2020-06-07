@@ -19,5 +19,8 @@
     ],
     "autoload":{
         "psr-4":{"Plex\\" : "src/Plex/" }
+    },
+    "require": {
+        "ext-curl": "*"
     }
 }
